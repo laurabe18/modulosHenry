@@ -62,7 +62,7 @@ console.log(instructor);// 'Tony'
 ```javascript
 var instructor = 'Tony';
 let pm = 'Franco';
-if (true) { //los controles de flujo solo tiene un contexto en bloque
+if (true) { //los controles de flujo solo tiene un contexto en bloque NO CREAN UN NUEVO CONTEXTO, POR ENDE LOS VAR PISAN AL VAR ANTERIOR
    var instructor = 'The Flash';
    let pm = 'Reverse Flash';
    console.log(instructor);// 'The Flash'
@@ -149,8 +149,8 @@ var obj = {
 
 console.log(obj.prop.getFullname());//'Aurelio De Rosa' porque el this esta dentro del metodo y apunta al obj
 
-var test = obj.prop.getFullname;
-
+var test = obj.prop.getFullname;// se guarda la funcion tal cual sin ejecutarla, es lo mismo que hacer esto => function () {return this.fullname}
+         
 console.log(test());// 'undefine' porque es global dentro del vs si estuviera en el navegador si entra 'juan perez'
 ```
 
