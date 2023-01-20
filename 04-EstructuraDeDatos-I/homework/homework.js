@@ -14,9 +14,15 @@ Secuencia:  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...
 Como ejercicio adicional y completamente opcional, al terminar de resolver este problema pueden intentar definir funciones que logren los mismos resultados pero de manera iterativa.
 */
 
-function nFactorial(n) {}
+function nFactorial(n) {
+  if(n === 0) return 1;
+  return n * nFactorial(n - 1) // se necesita una funcion factorial, y como es la que estamos usando se retorna
+}
 
-function nFibonacci(n) {}
+function nFibonacci(n) {
+  if(n <= 1) return n;
+  return nFibonacci(n - 1) + nFibonacci(n - 2)
+}
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
@@ -27,7 +33,24 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
-function Queue() {}
+function Queue() {
+  this.arr = [] // ARRANCA EN UN [] DEBIDO A QUE SE VA AGREGANDO VALORES
+}
+
+Queue.prototype.enqueue = function(value){ // VALUE PORQUE PUSHEA UN VALOR QUE NO CONOCEMOS, OSEA AGREGA ALGO
+  this.arr.push(value)
+}
+
+Queue.prototype.dequeue = function(){
+  // if(this.arr.length === 0) return undefined; ESTO SE PUEDE QUITAR DEBIDO A QUE SHIFT EN CADA VUELTA QUITA UNO Y CUANDO LLEGUE A CERO NO PUEDE SEGUIR SACANDO ENTONCES SOLO DIRA UNDEFINED
+  return this.arr.shift();
+}
+
+Queue.prototype.size = function(){
+    return this.arr.length; // SE QUIERE SABER EL LARGO DEL ARRAY, POR ESO EL .LENGTH
+}
+
+
 
 /*⚠️ No modificar nada debajo de esta línea ⚠️*/
 module.exports = {
